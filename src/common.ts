@@ -1,10 +1,3 @@
-export interface Transform {
-    width?: string,
-    height?: string,
-    padding?: string,
-    margin?: string;
-};
-
 export const layoutMap = {
     'sm': '8px',
     'md': '12px',
