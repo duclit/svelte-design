@@ -1,18 +1,20 @@
 <script lang="ts">
-    import Flexbox from "../Flexbox.svelte";
-    
+    import { fade } from "svelte/transition";
+    import { quintOut } from "svelte/easing";
+    import type { Size } from "../common";
+
+    export let size: Size = 'md';
     export let font: 'sans-serif' | 'monospace' = 'sans-serif';
     export let title: string;
 </script>
 
-<main class="{font}">
+<main class="{font} {size}" transition:fade={{ delay: 0, duration: 200, easing: quintOut }}>
     <h1 class="{font}">{title}</h1>
     <slot></slot>
 </main>
 
 <style>
     main {
-        width: 300px;
         height: fit-content;
 
         display: flex;
@@ -24,6 +26,24 @@
         
         border: 1px solid #E5E5EA;
         border-radius: 8px;
+
+        background: white;
+    }
+
+    .sm {
+        width: 300px;
+    }
+
+    .md {
+        width: 450px;
+    }
+
+    .lg {
+        width: 600px;
+    }
+
+    .xl {
+        width: 800px;
     }
 
     .monospace {
